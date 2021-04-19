@@ -100,22 +100,36 @@ class Team {
     generatePage() {
         let beginHTML = `
         <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>`
+        <html lang="en">
+        
+        <head>
+                <meta charset="UTF-8">
+                <meta http-equiv="X-UA-Compatible" content="IE=edge">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
+                        integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+                        crossorigin="anonymous">
+                <title>Team Profile</title>
+        </head>
+        
+        <body>
+                <nav class="navbar navbar-light bg-dark ">
+                        <div class="container-fluid ">
+                                <span class="fs-1 navbar-brand mb-0 h1 py-4 text-white">Team Profile</span>
+                        </div>
+                </nav>
+                <div class="row row-cols-1 row-cols-md-3 g-4">
+                `
         let body = this.team;
 
-        let endHTML = `</body>
+        let endHTML = `
+        </div>
+        </body>
         </html>`;
 
         return fs.writeFile('test.html', beginHTML + body + endHTML, (err) =>
-        err ? console.error(err) : console.log('Success!')
-      );
+            err ? console.error(err) : console.log('Success!')
+        );
     }
 
 }
