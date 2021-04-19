@@ -8,7 +8,7 @@ const Intern = require('../lib/Intern');
 
 class Team {
     constructor() {
-
+        this.team = [];
 
     }
 
@@ -20,17 +20,19 @@ class Team {
         return inquirer
             .prompt(questions)
             .then((answers) => {
-                console.log(answers.name);
+
+                const addManager = new Manager(answers.id, answers.name, answers.email, answers.officeNumber)
+                this.team.push(addManager.generateHTML());
             })
             .then(() => {
-                this.nextEmployee(true)
+                this.nextEmployee()
             })
             .catch((err) => console.error(err));
 
     }
 
-    addEngineer(){
-        console.log("Please enter the infos of the Team Leader");
+    addEngineer() {
+        console.log("Please enter the infos of the Engineer");
         // Get the questions from the Manager Class
         let questions = new Engineer().getQuestions();
         return inquirer
@@ -44,14 +46,14 @@ class Team {
             .catch((err) => console.error(err));
     }
 
-    addIntern(){
-        console.log("Please enter the infos of the Team Leader");
+    addIntern() {
+        console.log("Please enter the infos of the Intern");
         // Get the questions from the Manager Class
         let questions = new Intern().getQuestions();
         return inquirer
             .prompt(questions)
             .then((answers) => {
-                console.log(answers.name);
+                // const addIntern
             })
             .then(() => {
                 this.nextEmployee()
@@ -89,11 +91,33 @@ class Team {
                     if (answers.choice == "yes") {
                         return this.nextEmployee(true);
                     } else {
-                        return generatePage();
+                        return this.generatePage();
                     }
                 })
         }
     }
+
+    generatePage() {
+        let beginHTML = `
+        <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>`
+        let body = this.team;
+
+        let endHTML = `</body>
+        </html>`;
+
+        return fs.writeFile('test.html', beginHTML + body + endHTML, (err) =>
+        err ? console.error(err) : console.log('Success!')
+      );
+    }
+
 }
 
 module.exports = Team;
