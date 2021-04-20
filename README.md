@@ -4,6 +4,8 @@ Homework for UC Berkeley Extension Coding Bootcamp
 ![Site](./src/screenshot.png)
 
 ## Technologies Used
+- HTML - Text content of the result page
+- Bootstrap - CSS Framework used to style of the result page
 - Javascript - Backend coding
 - Node - JavaScript runtime environment
 - Inquirer - Node module to create a form
@@ -54,6 +56,9 @@ getQuestions() {
         return questions;
 ```
 In this example, I stored all the questions for each different kind of employee in a Method inside each object for better readability and easier editing.
+
+## Result Example
+[Example](https://dylancouzon.github.io/Team_Profile_Generator/dist/Dylan.html)
 
 ## Author Links
 [LinkedIn](https://www.linkedin.com/in/dcouzon/)
