@@ -1,16 +1,23 @@
 {
-  "name": "Team_Profile_Generator",
-  "description": "",
-  "version": "1.0.0",
-  "scripts": {
-    "test": "jest"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/Dylancouzon/Team_Profile_Generator"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "homepage": "https://github.com/Dylancouzon/Team_Profile_Generator"
+    "name": "team_profile_generator",
+    "description": "Team Profile generator designed for UC Berkeley Extension Bootcamp",
+    "version": "1.0.0",
+    "scripts": {
+        "test": "jest"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Dylancouzon/Team_Profile_Generator"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "homepage": "https://github.com/Dylancouzon/Team_Profile_Generator",
+    "dependencies": {
+        "jest": "^24.8.0",
+        "inquirer": "^6.2.1"
+    },
+    "devDependencies": {
+        "jest": "^24.8.0"
+    }
 }
