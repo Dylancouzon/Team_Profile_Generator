@@ -38,7 +38,8 @@ class Team {
         return inquirer
             .prompt(questions)
             .then((answers) => {
-                console.log(answers.name);
+                const addEngineer = new Engineer(answers.id, answers.name, answers.email, answers.gitHub)
+                this.team.push(addEngineer.generateHTML());
             })
             .then(() => {
                 this.nextEmployee()
@@ -53,7 +54,8 @@ class Team {
         return inquirer
             .prompt(questions)
             .then((answers) => {
-                // const addIntern
+                const addIntern = new Intern(answers.id, answers.name, answers.email, answers.school)
+                this.team.push(addIntern.generateHTML());
             })
             .then(() => {
                 this.nextEmployee()
@@ -113,14 +115,14 @@ class Team {
         </head>
         
         <body>
-                <nav class="navbar navbar-light bg-dark ">
+                <nav class="navbar navbar-light bg-dark mb-4">
                         <div class="container-fluid ">
                                 <span class="fs-1 navbar-brand mb-0 h1 py-4 text-white">Team Profile</span>
                         </div>
                 </nav>
                 <div class="row row-cols-1 row-cols-md-3 g-4">
                 `
-        let body = this.team;
+        let body = this.team.join("");
 
         let endHTML = `
         </div>
