@@ -9,6 +9,7 @@ const Intern = require('../lib/Intern');
 class Team {
     constructor() {
         this.team = [];
+        this.fileName = "default.html";
 
     }
 
@@ -23,6 +24,7 @@ class Team {
 
                 const addManager = new Manager(answers.id, answers.name, answers.email, answers.officeNumber)
                 this.team.push(addManager.generateHTML());
+                this.fileName = answers.name;
             })
             .then(() => {
                 this.nextEmployee()
@@ -129,7 +131,7 @@ class Team {
         </body>
         </html>`;
 
-        return fs.writeFile('test.html', beginHTML + body + endHTML, (err) =>
+        return fs.writeFile(`./dist/${this.fileName}.html`, beginHTML + body + endHTML, (err) =>
             err ? console.error(err) : console.log('Success!')
         );
     }
