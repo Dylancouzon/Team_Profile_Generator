@@ -21,7 +21,7 @@ class Team {
         return inquirer
             .prompt(questions)
             .then((answers) => {
-
+                //Creates the manager object then push the generateHTML inside the team object
                 const addManager = new Manager(answers.id, answers.name, answers.email, answers.officeNumber)
                 this.team.push(addManager.generateHTML());
                 this.fileName = answers.name;
@@ -35,11 +35,12 @@ class Team {
 
     addEngineer() {
         console.log("Please enter the infos of the Engineer");
-        // Get the questions from the Manager Class
+        // Get the questions from the Engineer Class
         let questions = new Engineer().getQuestions();
         return inquirer
             .prompt(questions)
             .then((answers) => {
+                //Creates the Engineer object then push the generateHTML inside the team object
                 const addEngineer = new Engineer(answers.id, answers.name, answers.email, answers.gitHub)
                 this.team.push(addEngineer.generateHTML());
             })
@@ -51,11 +52,12 @@ class Team {
 
     addIntern() {
         console.log("Please enter the infos of the Intern");
-        // Get the questions from the Manager Class
+        // Get the questions from the Intern Class
         let questions = new Intern().getQuestions();
         return inquirer
             .prompt(questions)
             .then((answers) => {
+                //Creates the Intern object then push the generateHTML inside the team object
                 const addIntern = new Intern(answers.id, answers.name, answers.email, answers.school)
                 this.team.push(addIntern.generateHTML());
             })
@@ -100,7 +102,7 @@ class Team {
                 })
         }
     }
-
+    //Generate the HTML page
     generatePage() {
         let beginHTML = `
         <!DOCTYPE html>
@@ -131,6 +133,7 @@ class Team {
         </body>
         </html>`;
 
+        //Creates an html file in the dist folder
         return fs.writeFile(`./dist/${this.fileName}.html`, beginHTML + body + endHTML, (err) =>
             err ? console.error(err) : console.log('Success!')
         );
